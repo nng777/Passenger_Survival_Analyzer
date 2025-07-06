@@ -70,7 +70,31 @@ class TitanicPredictor:
         }
         
         df = pd.DataFrame(data)
-        
+
+
+        # Generate a simple Name column for tasks that need titles
+
+        male_first = ['John', 'William', 'James', 'George', 'Charles']
+        female_first = ['Mary', 'Anna', 'Emma', 'Elizabeth', 'Minnie']
+        surnames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Miller', 'Davis', 'Wilson', 'Taylor', 'Anderson']
+
+        titles_male = ['Mr', 'Master', 'Dr', 'Rev', 'Col']
+        titles_female = ['Mrs', 'Miss', 'Dr']
+
+        names = []
+        for sex in df['Sex']:
+            if sex == 'male':
+                title = np.random.choice(titles_male, p=[0.7, 0.1, 0.1, 0.05, 0.05])
+                first = np.random.choice(male_first)
+            else:
+                title = np.random.choice(titles_female, p=[0.55, 0.4, 0.05])
+                first = np.random.choice(female_first)
+            surname = np.random.choice(surnames)
+            names.append(f"{surname}, {title}. {first}")
+
+        df['Name'] = names
+
+
         # Add some missing values to simulate real data
         missing_age_idx = np.random.choice(df.index, size=int(0.2 * len(df)), replace=False)
         df.loc[missing_age_idx, 'Age'] = np.nan
