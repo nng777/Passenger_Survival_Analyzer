@@ -1,21 +1,20 @@
-Task 4: The Title Extractor 🎭
-Goal: Extract titles from passenger names and use them as features
+Task 5: The Model Experimenter 🧪
+Goal: Try a new machine learning algorithm
 
 What to do:
 
-Extract titles from the Name column:
+Add a new model to test - Support Vector Machine (SVM):
 
-df['Title'] = df['Name'].str.extract(' ([A-Za-z]+)\.', expand=False)
-Group rare titles together:
+from sklearn.svm import SVC
 
-# Keep common titles, group others as 'Other'
-common_titles = ['Mr', 'Mrs', 'Miss', 'Master']
-df['Title'] = df['Title'].apply(lambda x: x if x in common_titles else 'Other')
-Convert to dummy variables and add to your model
+# Add to your models dictionary
+'SVM': SVC(probability=True, random_state=42)
+Compare all four models (Logistic Regression, Decision Tree, Random Forest, SVM)
+
+Create a simple bar chart showing their accuracies
 
 Questions to answer:
 
-Which titles had the highest survival rates?
-Did adding titles improve your model's accuracy?
-What does "Master" mean, and why might it be important?
-Hint: Master was used for young boys, Mrs for married women, Miss for unmarried women
+Which model performed best on your data?
+Which model was fastest to train?
+If you had to explain predictions to a non-technical person, which model would you choose and why?
