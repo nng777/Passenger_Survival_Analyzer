@@ -103,7 +103,7 @@ def custom_age_accuracy() -> tuple[float, pd.Series]:
 
 
 def main():
-    print("\n🚢 TASK 2: AGE GROUP EXPLORER")
+    print("\n TASK 2: AGE GROUP EXPLORER")
     base_acc = baseline_accuracy()
     new_acc, rates = custom_age_accuracy()
 

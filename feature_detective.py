@@ -32,6 +32,7 @@ def main():
         key = feature if feature else 'All Features'
         results[key] = acc
 
+    print("TASK 1: Feature Detective")
     print("Feature Removal Experiment")
     print("==========================")
     for feature, acc in results.items():
